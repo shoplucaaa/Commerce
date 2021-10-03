@@ -10,6 +10,8 @@
 - Có trang admin để quản lí sản phẩm, comment, categories, blog, bill và chỉ có admin mới có thể truy cập.
 - User có thể cập nhật thay đổi thông tin, thực hiện mua hàng, đọc blog, gửi email phản hồi.
 
+# Giao diện chức năng website
+
 > Giao diện chính của trang web
 
 ![Tên ảnh](https://lh3.googleusercontent.com/vZfJ8Q7ojJp59eSaxtKBoEwJ5OBZ2CdtaqVmbVnB_3xzldmCKdGUR_1N2YtSmpjKdKUiREe4uFWjYizYoKxI4oG3TetOS2uFMb8rI7Wflfr69XxqXvlbRbbkWxxDEQNf4PK0w2KlBJEuBnVFrq3pQuYrbeIYK3J_k9fCkPAwmmI81ZzPoYwQgdUy8RZRRYX4nbEQCXuey-cNFB6FxlCvqSS7zX0Qcx6cQBN50zmlEsRfEhMzfy27NWVimkVABgd2bz_qOoJHmd1F-00AOZ3VN5gGk4oVIlnJGwh0lVvGupNcJ-Iv450CJ5MBFAt3dN--CcH9UbIAs6igF88QxJ85cybdGL4oxvccjnZtzE9R9i1GF_kEwpeKy1LmWyBSIpfRb-O6xa7kqr9wIb_ipOqcuCeArWEbZADdPGGrFpjbMl99w5jNh6wvM6jvAZEDycHPRgt-XfOrbI_93MxMv0e3zmqRimMEP9aGj8tyPAGW3txufXK5Dc8410qEoojkR-MxwR9q1IK_DGeFIHnnBkPOn4NptLFjrIWgEe3hSyMoIpu-LPnKdK9ZsVLMhVUj9HC2lZ0U3-wN8nJR6ux1Sth8dQooy6Nw0lCwi92IrFqdw5j-vJ8Z68gF71gb_wO2j8ZqF1_GGDcsIFYzD-o-yzItlB93pvf-PGTm2N_ZOKiEMYjA5_FYRX4IrF_Dn3UF8Cw6mAokfATbGWvBluiudWacHj0=w1866-h864-no?authuser=0)
