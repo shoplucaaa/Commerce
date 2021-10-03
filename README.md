@@ -1,10 +1,14 @@
 ﻿# Commerce
+ 
+ # Một vài nét
+ 
 - Dự án website E-Commerce Shopping-cart ứng dụng các kiến thức đã học về Spring framework
 - Trang web với hai quyền chính là ROLE_ADMIN, ROLE_USER sử dụng spring security để xác thực và phân quyền
 - Sử dụng OAUTH-2 để đăng nhập bằng tài khoản Facebook và Google
 - Cơ sở dữ liệu MySQL kết nối bằng Hibernate, Spring Data JPA
 - Sử dụng session để lưu giỏ hàng, cập nhật giá tiền và số lượng mỗi khi có giao dịch mới
 - Có trang admin để quản lí sản phẩm, comment, categories, blog, bill và chỉ có admin mới có thể truy cập.
+- User có thể cập nhật thay đổi thông tin, thực hiện mua hàng, đọc blog, gửi email phản hồi.
 
 > Giao diện chính của trang web
 
@@ -41,6 +45,10 @@
 > Giỏ hàng
 
 ![Tên ảnh](https://lh3.googleusercontent.com/5oVgBAMd_MGVadNLaliDFUpTGbjIuQ2a7zOWhsajBx4VORgala3Ti6shBWgI0dIa744mgAWvFdepfmT5RxSVJ32IWf1BVVjC3wgUOL2O8uxDJuwcxBoIEVe7-DU0byOIOIF_Nc7RG79C1HwMfWdMG_BmoHVwoFmF7BPfX2eZ8xhkTlicNIkpO-zNRnzsVCVRXjLE1K6ixyUOX8cgH9CaKlk4DsPedId4snHIBztQLYgBBELqmwUG9T9rQi5xWvculEZ0Kk5TsryVOZGN4FYs2v_DCqbbxTTV16rU0oe5jSdEcors_Fw43ojO4uQaxUaZilV7d2b0JbkG395wPJr2r9Z8aOxmAyaf2_qOA-Tkq3axb1-kLqRK1Bi3u9JTCB1uCFdpHIPbxb6wOpN0KmvAzrcr6Aj-0u62LfvHkuXLowRAKIRcUMF3TR3A4pM_O1y-MX4vyHBFABSOH-fciarKlQshsqkWjvXGrVf0fFVEoZ5oyk1C1TLsbRLlonNWTkVMnYMPdhaDLVpqa6DeNcWJj910raURW_rgIJIBv8wi3dNh4jOQX_H-Kprk4X1_W1nhZPuuabspuzcWlFmtGSNAyTMAdrYoN7UyU4esV7ZkSTSObPfMAvV9a2i-mhdP7_iq85kyt3RZqhxKWJlKcpwJWTUU1xHMgTT2fVTOTaB0PbRKMYqLbSU523BgmbCqjE7eBPj9nFCS4wQ7OS6Uw8pU7Jo=w1539-h866-no?authuser=0)
+
+> Giao diện trang thay đổi thông tin
+
+![Tên ảnh](https://lh3.googleusercontent.com/oqjur4VvEcjyodGK_SM6gAMsbJvZa_ht53UCk87cwxsAkuGtt_Ht2m6F8NHLuva_yzw2dUK2Xtmfnfgjkr0akUFpG434HMWKfMP8kbf7gkk0CQrwY71YFq_SgOsItLzitKXRbL5dX7y5YE7OI0Zspfdnx5Y1bXMaKq9qE0edIHYWq0qk7L3QJcmnum4HZNx6-c2XAYTiDBBAPLhPNqBLvCMQJSqTJUb6rWlGc5VyCX79Qr06klFyTivTfMNitkQQ5uIfi1aK64umnnttj42rRO13IQoJjgRLNl6UmTEq-KdbDAcS0ZX3E5Olkkd6u2bRpOuKuOYO-zAD6WX_dB7h1oGo3riN1Edy6lNazHjUK5Jl-aCiGui1oH3i0sWgJMIZmqb2Use9grUhaMBlAWJbMA1vL4tZnxJrUDQL35GwCjuZmzJU8-dNp4QskDnYHj--N7zpCMVpsmdO7tWqLEBTGEPCaXm14pRzeKmk9A55vHDpofkgoIBq5PzTl6ZzdozqnJOO_KUgeOfpwyaIZpLLgByBApC8ikBjMGm_uA9hcqB1IbOjoVeq8dpV6Rb3x0gV-RoMIHkOyVIsN3fGHHj_4YWN8jLbwYdqvEdRDTmkRccVPakC3qeG-PAoll2uAI6r0Gi2vXR1orgLwFjU9_zb9MZNkgdugRAMqLuPqjDyAnMq6bro2Ka4IPjJsZSYaLR68KF8eIXacdpzn2JAgI6cA30=w1478-h866-no?authuser=0)
 
 > Giao diện trang quản lí
 
