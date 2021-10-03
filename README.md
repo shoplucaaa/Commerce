@@ -3,8 +3,8 @@
 - Trang web với hai quyền chính là ROLE_ADMIN, ROLE_USER sử dụng spring security để xác thực và phân quyền
 - Sử dụng OAUTH-2 để đăng nhập bằng tài khoản Facebook và Google
 - Cơ sở dữ liệu MySQL kết nối bằng Hibernate, Spring Data JPA
-- Sử dụng session để lưu giỏ hàng
-- Có trang admin để quản lí sản phẩm, comment, categories, blog và chỉ có admin mới có thể truy cập.
+- Sử dụng session để lưu giỏ hàng, cập nhật giá tiền và số lượng mỗi khi có giao dịch mới
+- Có trang admin để quản lí sản phẩm, comment, categories, blog, bill và chỉ có admin mới có thể truy cập.
 
 > Giao diện chính của trang web
 
