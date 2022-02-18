@@ -58,7 +58,11 @@ public class User implements Serializable {
 	@Column(name = "auth_provider")
 	private AuthenticationProvider authProvider;
 
-	
+	@Column(name = "one_time_password")
+	private String oneTimePassword;
+
+	@Column(name = "otp_requested_time")
+	private String otpRequestedTime;
 
 	public User(int id, String password, String username, String role, Boolean enabled, Date created_time, String name,
 			String phone, String city, String address, String state, int country_id, String postal_code,String avatar,
@@ -207,6 +211,22 @@ public class User implements Serializable {
 
 	public void setAuthProvider(AuthenticationProvider authProvider) {
 		this.authProvider = authProvider;
+	}
+
+	public String getOneTimePassword() {
+		return oneTimePassword;
+	}
+
+	public void setOneTimePassword(String oneTimePassword) {
+		this.oneTimePassword = oneTimePassword;
+	}
+
+	public String getOtpRequestedTime() {
+		return otpRequestedTime;
+	}
+
+	public void setOtpRequestedTime(String otpRequestedTime) {
+		this.otpRequestedTime = otpRequestedTime;
 	}
 
 	@Transient

@@ -16,7 +16,7 @@ public class UserDTO {
 	private String postal_code;
 	private String avatar;
 
-	public UserDTO(int id, String name, String username, String password, String mail, String role, String phone, String city, String address, String state, int country_id, String avatar,
+	public UserDTO(int id, String name, String username, String password, String role, String phone, String city, String address, String state, int country_id, String avatar,
 			String postal_code) {
 		super();
 		this.id = id;

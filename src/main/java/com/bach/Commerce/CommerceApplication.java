@@ -10,11 +10,10 @@ public class CommerceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CommerceApplication.class, args);
 		
-		BCryptPasswordEncoder endcoder = new BCryptPasswordEncoder();
+		/*BCryptPasswordEncoder endcoder = new BCryptPasswordEncoder();
 		String rawPassword = "123456";
 		String endcodedPassword = endcoder.encode(rawPassword);
-		
-		System.out.println(endcodedPassword);
+		System.out.println(endcodedPassword);*/
 		
 	}
 }
