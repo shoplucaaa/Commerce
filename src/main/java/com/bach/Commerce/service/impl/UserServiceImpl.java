@@ -1,10 +1,15 @@
 package com.bach.Commerce.service.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMailMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +24,9 @@ import com.bach.Commerce.security.oauth.CustomOAuth2User;
 import com.bach.Commerce.service.LoginService;
 import com.bach.Commerce.service.UserService;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -28,6 +36,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserRepository userRepo;
+
+	@Autowired
+	JavaMailSender javaMailSender;
 
 	@Override
 	public User addUser(UserDTO userDTO) {
@@ -102,8 +113,9 @@ public class UserServiceImpl implements UserService {
 		userDTO.setState(user.getState());
 		userDTO.setCountry_id(user.getCountry_id());
 		userDTO.setAvatar(user.getAvatar());
-		
-		
+		userDTO.setOneTimePassword(user.getOneTimePassword());
+		userDTO.setOtpRequestedTime(user.getOtpRequestedTime());
+
 		return userDTO;
 	}
 
@@ -150,6 +162,48 @@ public class UserServiceImpl implements UserService {
 			userDAO.deleteUser(user);
 		}
 		
+	}
+
+	@Override
+	public void generateOneTimePassword(UserDTO userDTO) throws MessagingException, UnsupportedEncodingException {
+
+		User user = userDAO.getUserById(userDTO.getId());
+
+		String OTP = RandomString.make(8);
+		System.out.println("OTP: " + OTP);
+
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String endcodeOTP = passwordEncoder.encode(OTP);
+
+		user.setOneTimePassword(endcodeOTP);
+		user.setOtpRequestedTime(new Date());
+
+		userDAO.editUser(user);
+
+		sendOTPEmail(user,OTP);
+
+		System.out.println("Email was sent.");
+	}
+
+	private void sendOTPEmail(User user, String OTP) throws MessagingException, UnsupportedEncodingException {
+
+		MimeMessage message = javaMailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+
+		helper.setFrom("ngocbachnguyen99@gmail.com", "Commerce Support");
+		helper.setTo(user.getUsername());
+
+		String subject = "Đây là mã One-Time Password (OTP) của bạn - Hết hiệu lực trong 5 phút.";
+		String content = "<p>Xin chào " + user.getName() + ",</p>"
+					+ "<p>Vì lí do bảo mật, chúng tôi yêu cầu bạn sử dụng mã OTP bên dưới để đăng nhập: </p>"
+					+ "<p><b>" + OTP + "</b></p>"
+					+ "<br>"
+					+ "<p> Chú ý : Mã OTP này chỉ có hiệu lực trong 5 phút. </p>";
+
+		helper.setSubject(subject);
+		helper.setText(content, true);
+
+		javaMailSender.send(message);
 	}
 
 	@Override

@@ -37,6 +37,11 @@ public class LoginService implements UserDetails {
 
 	@Override
 	public String getPassword() {
+
+		if(user.isOTPRequired()){
+			return  user.getOneTimePassword();
+		}
+
 		return user.getPassword();
 	}
 

@@ -16,19 +16,23 @@
 				<form th:action="@{/login}" method ="post" class="sign-in-form" id="loginForm">
 					<h2 class="title">Đăng nhập</h2>
 					<div th:if="${param.error}">
-						<p style = "color : red;">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+						<p style = "color : red; text-align: center">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+					</div>
+
+					<div th:if="${param.otp}">
+						<p style = "color : red; text-align: center">Kiểm tra mã OTP được gửi tới email [[${param.email}]]</p>
 					</div>
 
 					<div th:if="${param.logout}">
-						<p style = "color : red;"> Bạn vừa mới logout</p>
+						<p style = "color : red; text-align: center"> Bạn vừa mới logout</p>
 					</div>
 					<div class="input-field">
 						<i class="fas fa-user"></i> <input type="Email"
-							placeholder="Email" value="iamghost827@gmail.com" name="username"/>
+							placeholder="Email" th:value="${param.email}" name="username"/>
 					</div>
 					<div class="input-field">
 						<i class="fas fa-lock"></i> <input type="password"
-							placeholder="Password" value="123456" name ="password" />
+							th:placeholder="${param.otp != null ? 'Your One Timne Password (OTP)' : 'Password'}" name ="password" />
 					</div>
 					<button class="g-recaptcha btn btn-primary" data-sitekey="6LfjhogeAAAAAALrESQQ95hwKHI5epNzvQKFCM-v" data-callback="onSubmit" data-action="submit">Đăng nhập</button> <!--class="btn solid" -->
 					<p class="social-text">Or Sign in with social platforms</p>

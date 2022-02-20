@@ -57,9 +57,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/member/**").hasAnyRole("USER","ADMIN").anyRequest().permitAll()
 			//cấu hình giao diện xác thực
 			.and()
-			.addFilterBefore(getCustomLoginFilter(), CustomLoginFilter.class)
+			.addFilterBefore(beforeAuthenticationFilter, BeforeAuthenticationFilter.class)
 			.formLogin().permitAll()
-				.loginPage("/dang-nhap").usernameParameter("username").loginProcessingUrl("/login").defaultSuccessUrl("/trang-chu")
+			.loginPage("/dang-nhap").usernameParameter("username").loginProcessingUrl("/login").defaultSuccessUrl("/trang-chu")
 			.and()
 			.logout().permitAll()
 			.and()
@@ -84,7 +84,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private BeforeAuthenticationFilter beforeAuthenticationFilter;
 
-	private CustomLoginFilter getCustomLoginFilter() throws Exception {
+	/*private CustomLoginFilter getCustomLoginFilter() throws Exception {
 		CustomLoginFilter filter = new CustomLoginFilter("/login", "POST");
 		filter.setAuthenticationManager(authenticationManager());
 		filter.setAuthenticationFailureHandler(new AuthenticationFailureHandler() {
@@ -97,6 +97,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		});
 
 		return filter;
-	}
+	}*/
 }
 //

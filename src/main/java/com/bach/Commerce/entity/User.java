@@ -62,7 +62,7 @@ public class User implements Serializable {
 	private String oneTimePassword;
 
 	@Column(name = "otp_requested_time")
-	private String otpRequestedTime;
+	private Date otpRequestedTime;
 
 	public User(int id, String password, String username, String role, Boolean enabled, Date created_time, String name,
 			String phone, String city, String address, String state, int country_id, String postal_code,String avatar,
@@ -221,11 +221,11 @@ public class User implements Serializable {
 		this.oneTimePassword = oneTimePassword;
 	}
 
-	public String getOtpRequestedTime() {
+	public Date getOtpRequestedTime() {
 		return otpRequestedTime;
 	}
 
-	public void setOtpRequestedTime(String otpRequestedTime) {
+	public void setOtpRequestedTime(Date otpRequestedTime) {
 		this.otpRequestedTime = otpRequestedTime;
 	}
 
@@ -235,4 +235,19 @@ public class User implements Serializable {
 		
 		return "/avatar-images/" + id + "/" + avatar;
 	}
+
+	public boolean isOTPRequired(){
+		if(this.oneTimePassword == null){
+			return false;
+		}
+
+		long otpRequestedTimeMillis = this.otpRequestedTime.getTime();
+
+		if(otpRequestedTimeMillis + OTP_VALID_DURATION < System.currentTimeMillis()){ //Thời gian request + 5 phút nhỏ hơn thời gian hiện tại => hết hiệu lực mã OTP
+			return false; //OTP hết hạn
+		}
+		return true;
+	}
+
+	private static final long OTP_VALID_DURATION = 5 * 60 * 1000; // 5 phút
 }

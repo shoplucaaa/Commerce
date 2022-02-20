@@ -1,6 +1,7 @@
 package com.bach.Commerce.model;
 
 import javax.persistence.Transient;
+import java.util.Date;
 
 public class UserDTO {
 	private int id;
@@ -15,6 +16,8 @@ public class UserDTO {
 	private int country_id;
 	private String postal_code;
 	private String avatar;
+	private Date otpRequestedTime;
+	private String oneTimePassword;
 
 	public UserDTO(int id, String name, String username, String password, String role, String phone, String city, String address, String state, int country_id, String avatar,
 			String postal_code) {
@@ -132,11 +135,42 @@ public class UserDTO {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	
+
+	public Date getOtpRequestedTime() {
+		return otpRequestedTime;
+	}
+
+	public void setOtpRequestedTime(Date otpRequestedTime) {
+		this.otpRequestedTime = otpRequestedTime;
+	}
+
+	public String getOneTimePassword() {
+		return oneTimePassword;
+	}
+
+	public void setOneTimePassword(String oneTimePassword) {
+		this.oneTimePassword = oneTimePassword;
+	}
+
 	@Transient
 	public String getAvatarImagePath() {
 		if (avatar == null) return null;
 		
 		return "/avatar-images/" + id + "/" + avatar;
 	}
+
+	public boolean isOTPRequired(){
+		if(this.oneTimePassword == null){
+			return false;
+		}
+
+		long otpRequestedTimeMillis = this.otpRequestedTime.getTime();
+
+		if(otpRequestedTimeMillis + OTP_VALID_DURATION < System.currentTimeMillis()){ //Thời gian request + 5 phút nhỏ hơn thời gian hiện tại => hết hiệu lực mã OTP
+			return false; //OTP hết hạn
+		}
+		return true;
+	}
+
+	private static final long OTP_VALID_DURATION = 5 * 60 * 1000; // 5 phút
 }
